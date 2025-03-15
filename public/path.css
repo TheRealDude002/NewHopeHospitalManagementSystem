@@ -1,0 +1,410 @@
+/* ===== MATURE NAVIGATION CSS WITH VIDEO BACKGROUND ===== */
+
+:root {
+  /* Main color palette - more subdued and professional */
+  --primary: #2c5282;
+  --primary-dark: #1a365d;
+  --primary-light: #4a69bd;
+  --blue: #3b82f6;
+  --blue-dark: #1e40af;
+  --green: #047857;
+  --green-dark: #065f46;
+  --purple: #6d28d9;
+  --purple-dark: #5b21b6;
+  --amber: #b45309;
+  --amber-dark: #92400e;
+  --rose: #be123c;
+  --rose-dark: #9f1239;
+  --dark: #1e293b;
+  --light: #f8fafc;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  
+  /* Gradients - more subtle */
+  --gradient-blue: linear-gradient(to right, #3b82f6, #1e40af);
+  --gradient-green: linear-gradient(to right, #047857, #065f46);
+  --gradient-purple: linear-gradient(to right, #6d28d9, #5b21b6);
+  --gradient-amber: linear-gradient(to right, #b45309, #92400e);
+  --gradient-rose: linear-gradient(to right, #be123c, #9f1239);
+  
+  /* Shadows - more refined */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Animations */
+  --transition: all 0.3s ease;
+}
+
+/* ===== BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5; /* Keeping the background color as requested */
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Video Background */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(245, 245, 245, 0.85); /* Overlay that matches the body background */
+  z-index: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 1s ease-out;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+header h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 20px auto 0;
+}
+
+/* ===== NAVIGATION GRID ===== */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.nav-card {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-primary);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: var(--transition);
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  height: 100%;
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: calc(var(--order) * 0.1s);
+}
+
+.nav-card:nth-child(1) { --order: 1; }
+.nav-card:nth-child(2) { --order: 2; }
+.nav-card:nth-child(3) { --order: 3; }
+.nav-card:nth-child(4) { --order: 4; }
+.nav-card:nth-child(5) { --order: 5; }
+
+.nav-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  transition: var(--transition);
+}
+
+.nav-card:nth-child(1)::before { background: var(--blue); }
+.nav-card:nth-child(2)::before { background: var(--green); }
+.nav-card:nth-child(3)::before { background: var(--purple); }
+.nav-card:nth-child(4)::before { background: var(--amber); }
+.nav-card:nth-child(5)::before { background: var(--rose); }
+
+.nav-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-content {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.card-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: auto;
+  padding-bottom: 1rem;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-button i {
+  margin-left: 8px;
+  transition: var(--transition);
+}
+
+.nav-button:hover i {
+  transform: translateX(3px);
+}
+
+/* Button colors */
+.nav-button.blue {
+  background: var(--blue);
+}
+
+.nav-button.blue:hover {
+  background: var(--blue-dark);
+}
+
+.nav-button.green {
+  background: var(--green);
+}
+
+.nav-button.green:hover {
+  background: var(--green-dark);
+}
+
+.nav-button.purple {
+  background: var(--purple);
+}
+
+.nav-button.purple:hover {
+  background: var(--purple-dark);
+}
+
+.nav-button.amber {
+  background: var(--amber);
+}
+
+.nav-button.amber:hover {
+  background: var(--amber-dark);
+}
+
+.nav-button.rose {
+  background: var(--rose);
+}
+
+.nav-button.rose:hover {
+  background: var(--rose-dark);
+}
+
+/* Subtle card hover effect */
+.nav-card:hover .card-content h2 {
+  color: var(--primary);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  header p {
+    font-size: 1rem;
+  }
+  
+  .button-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+  
+  .nav-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== MATURE DESIGN ENHANCEMENTS ===== */
+
+/* Subtle grid pattern overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Refined card design */
+.nav-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card icon placeholders - replace with actual icons if needed */
+.card-content::before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+.nav-card:nth-child(1) .card-content::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%233b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>');
+}
+
+.nav-card:nth-child(2) .card-content::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>');
+}
+
+.nav-card:nth-child(3) .card-content::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%236d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>');
+}
+
+.nav-card:nth-child(4) .card-content::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23b45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>');
+}
+
+.nav-card:nth-child(5) .card-content::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23be123c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>');
+}
+
+/* Subtle card hover effect */
+.nav-card:hover .card-content::before {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Refined button style */
+.nav-button {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a subtle texture to the page */
+.container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADLSURBVGhD7daxDcMwDAVRZ5mMkimyTKbJMlnGRQxIgAw3/08KFzimcNeBaZq2dV3PbdsuN8b4eLmua3vf9/NxzUScnHMeJEYiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJEIiJPJXIvvHtm0fwGnZJYw8J+AAAAAASUVORK5CYII=');
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: -1;
+}

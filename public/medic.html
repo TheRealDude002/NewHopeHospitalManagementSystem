@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Record Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <h3>Medical Record Form</h3>
+        <form id="medicalRecordForm" onsubmit="event.preventDefault(); submitForm();">
+            <!-- RecordID -->
+           <!---- <div class="form-group">
+                <label for="recordID">Record ID:</label>
+                <input type="text" id="recordID" name="recordID" required>
+            </div> --> 
+
+            <!-- PatientID -->
+            <div class="form-group">
+                <label for="patientID" >Patient ID:</label>
+                <input type="text" id="patientID" name="patientID" required>
+            </div>
+
+            <!-- DoctorID -->
+            <div class="form-group">
+                <label for="doctorID">Doctor ID:</label>
+                <input type="text" id="doctorID" name="doctorID" required>
+            </div>
+
+            <!-- Disease -->
+            <div class="form-group">
+                <label for="disease">Disease:</label>
+                <input type="text" id="disease" name="disease" required>
+            </div>
+
+            <!-- OriginalWard -->
+            <div class="form-group">
+                <label for="originalWard">Original Ward:</label>
+                <input type="text" id="originalWard" name="originalWard" required>
+            </div>
+
+            <!-- DischargeWard -->
+            <div class="form-group">
+                <label for="dischargeWard">Discharge Ward (Optional):</label>
+                <input type="text" id="dischargeWard" name="dischargeWard">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+
+            <!-- Output Area -->
+            <div id="output"></div>
+        </form>
+    </div>
+
+    <script src="medic.js"></script>
+
+</body>
+</html>

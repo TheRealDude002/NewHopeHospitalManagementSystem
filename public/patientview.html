@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Options</title>
+  <link rel="stylesheet" href="patientview.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <style>
+    /* Loader container */
+    #loader {
+      display: none; /* hidden by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+
+    /* Spinner animation */
+    .spinner {
+      width: 44px;
+      height: 44px;
+      animation: spinner-y0fdc1 2s infinite ease;
+      transform-style: preserve-3d;
+      margin-bottom: 15px;
+    }
+
+    .spinner > div {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      border: 2px solid #282c35;
+    }
+
+    .spinner div:nth-of-type(1) {
+      transform: translateZ(-22px) rotateY(180deg);
+    }
+
+    .spinner div:nth-of-type(2) {
+      transform: rotateY(-270deg) translateX(50%);
+      transform-origin: top right;
+    }
+
+    .spinner div:nth-of-type(3) {
+      transform: rotateY(270deg) translateX(-50%);
+      transform-origin: center left;
+    }
+
+    .spinner div:nth-of-type(4) {
+      transform: rotateX(90deg) translateY(-50%);
+      transform-origin: top center;
+    }
+
+    .spinner div:nth-of-type(5) {
+      transform: rotateX(-90deg) translateY(50%);
+      transform-origin: bottom center;
+    }
+
+    .spinner div:nth-of-type(6) {
+      transform: translateZ(22px);
+    }
+
+    @keyframes spinner-y0fdc1 {
+      0% {
+        transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+      }
+      50% {
+        transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+      }
+      100% {
+        transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+      }
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <p>Loading...</p>
+  </div>
+
+  <!-- Page content -->
+  <div class="container">
+    <header>
+      <h1>Patients Options</h1>
+      <p>Select one of the options below</p>
+    </header>
+
+    <div class="button-container">
+      <button id="viewBtn" class="action-button view-button">
+        <i class="fas fa-eye"></i> View Patients
+      </button>
+      
+      <button id="InputBtn" class="action-button input-button">
+        <i class="fas fa-edit"></i> Enter new Patients
+      </button>
+      
+    </div>
+  </div>
+
+  <!-- JS Logic -->
+  <script>
+    document.getElementById("viewBtn").addEventListener("click", function () {
+      // Show the loader
+      document.getElementById("loader").style.display = "flex";
+
+      // Wait 1 second then redirect
+      setTimeout(() => {
+        window.location.href = "/patient.html";
+      }, 1000);
+    });
+
+    document.getElementById("InputBtn").addEventListener("click", function () {
+      // Show the loader
+      document.getElementById("loader").style.display = "flex";
+
+      // Wait 1 second then redirect
+      setTimeout(() => {
+        window.location.href = "/patient.html";
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h3>Doctor Registration Form</h3>
+        <form id="registrationForm" onsubmit="event.preventDefault(); submitForm();">
+            <!-- FirstName -->
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+
+            <!-- LastName -->
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    placeholder="11-111-1111-111-111" 
+                    pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}-[0-9]{3}-[0-9]{3}" 
+                    required>
+            </div>
+
+            <!-- Employment Type -->
+            <div class="form-group">
+                <label for="employmentType">Employment Type:</label>
+                <select id="employmentType" name="employmentType" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Resident">Resident</option>
+                    <option value="Visiting">Visiting</option>
+                </select>
+            </div>
+
+            <!-- Specialization -->
+            <div class="form-group">
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization" name="specialization" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+
+            <!-- Output Area -->
+            <div id="output"></div>
+        </form>
+    </div>
+
+    <script src="adddocscript.js"></script>
+
+</body>
+</html>
