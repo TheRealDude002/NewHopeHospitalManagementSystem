@@ -17,5 +17,12 @@
     "url": "https://github.com/TheRealDude002/NewHopeHospitalManagementSystem/issues"
   },
   "homepage": "https://github.com/TheRealDude002/NewHopeHospitalManagementSystem#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+    "server": "^1.0.41"
+  },
+  "devDependencies": {},
   "description": ""
 }
