@@ -424,7 +424,10 @@ app.post('/add-payment', async (req, res) => {
         const totalBill = parseFloat(advancePayment) + parseFloat(finalPayment);
 
         // Generate a PaymentID
-        const paymentID = 'PAY' + Math.floor(Math.random() * 10000); // Random PaymentID
+        const paymentID = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'.replace(/[x]/g, function(c) {
+            const r = Math.random() * 16 | 0; // Generate a random number between 0 and 15
+            return r.toString(16);// Random PaymentID
+        });
 
         // Create a new payment
         const newPayment = new PaymentDetails({

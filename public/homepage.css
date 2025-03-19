@@ -476,47 +476,57 @@
   }
   
   /* Service icons - replace with actual icons or images */
-  .ai-diagnostics {
-    background-image: url('images/icons/ai-diagnostics.svg');
+  .general-ward {
+    background-image: url('images/icons/general-ward.svg');
     background-color: rgba(0, 198, 255, 0.1);
   }
   
-  .robotic-surgery {
-    background-image: url('images/icons/robotic-surgery.svg');
+  .icu {
+    background-image: url('images/icons/icu.svg');
     background-color: rgba(125, 95, 255, 0.1);
   }
   
-  .genetic-medicine {
-    background-image: url('images/icons/genetic-medicine.svg');
+  .ccu {
+    background-image: url('images/icons/ccu.svg');
     background-color: rgba(0, 255, 204, 0.1);
   }
   
-  .telemedicine {
-    background-image: url('images/icons/telemedicine.svg');
+  .specialWard {
+    background-image: url('images/icons/specialWard.svg');
+    background-color: rgba(0, 230, 118, 0.1);
+  }
+   
+  .opd {
+    background-image: url('images/icons/opd.jpeg');
     background-color: rgba(0, 230, 118, 0.1);
   }
 
-.service-icon.ai-diagnostics::before {
+  .emergency{
+    background-image: url('images/icons/emergency.svg');
+  }
+
+
+.service-icon.general-ward::before {
     background-image: url('/placeholder.svg?height=40&width=40');
 }
 
-.service-icon.robotic-surgery::before {
+.service-icon.icu::before {
     background-image: url('/placeholder.svg?height=40&width=40');
 }
 
-.service-icon.genetic-medicine::before {
+.service-icon.ccu::before {
     background-image: url('/placeholder.svg?height=40&width=40');
 }
 
-.service-icon.telemedicine::before {
+.service-icon.specialWard::before {
     background-image: url('/placeholder.svg?height=40&width=40');
 }
 
-.service-icon.nano-therapy::before {
+.service-icon.opd::before {
     background-image: url('/placeholder.svg?height=40&width=40');
 }
 
-.service-icon.bio-printing::before {
+.service-icon.emergency::before {
     background-image: url('/placeholder.svg?height=40&width=40');
 }
 
@@ -641,7 +651,7 @@
 }
 
 .doctor-image {
-    height: 25px;
+    height: 170px;
     
     background-size: cover;
     background-position: center top;

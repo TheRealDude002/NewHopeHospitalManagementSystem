@@ -62,6 +62,17 @@ function submitForm() {
         return;
     }
 
+    // Enforce PaymentStatus rules
+    if (advancePayment === 0 && paymentStatus !== "Pending") {
+        alert("Payment Status must be 'Pending' when no advance payment is made.");
+        return;
+    }
+
+    if (advancePayment > 0 && paymentStatus === "Pending") {
+        alert("Payment Status cannot be 'Pending' when an advance payment has been made.");
+        return;
+    }
+
     // Display loading message
     document.getElementById("output").innerHTML = `<p>Sending data...</p>`;
 
@@ -104,5 +115,4 @@ function submitForm() {
             <p>There was an error submitting your data. Please try again later.</p>
         `;
     });
-
 }
