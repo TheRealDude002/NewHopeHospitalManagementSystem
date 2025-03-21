@@ -39,12 +39,233 @@
     background-color: var(--background);
     color: var(--text);
     line-height: 1.6;
-    padding: 2rem;
+    padding: 0;
     max-width: 1400px;
     margin: 0 auto;
     background-image: 
       radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.03) 0%, transparent 25%),
       radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.03) 0%, transparent 30%);
+  }
+
+  /* Navigation Bar Styling */
+  .navbar {
+    background: var(--card);
+    box-shadow: var(--shadow);
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .logo-text {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--transition);
+  }
+
+  .nav-link:hover {
+    color: var(--primary);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: var(--transition);
+    border-radius: 2px;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    color: var(--primary);
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  .nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .nav-button {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .nav-button:hover {
+    border-color: var(--primary-light);
+    color: var(--primary);
+  }
+
+  .nav-button.primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+  }
+
+  .nav-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  /* Content area padding */
+  .content {
+    padding: 2rem;
+  }
+
+  /* Responsive adjustments for navbar */
+  @media (max-width: 900px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+
+    .nav-actions {
+      display: none;
+    }
+
+    .navbar {
+      padding: 0.75rem 1rem;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--card);
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+      z-index: 200;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu .nav-actions {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 199;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
   
   h1 {
@@ -248,7 +469,7 @@
   
   /* Responsive adjustments */
   @media (max-width: 1200px) {
-    body {
+    .content {
       padding: 1.5rem;
     }
     
@@ -264,7 +485,7 @@
   }
   
   @media (max-width: 768px) {
-    body {
+    .content {
       padding: 1rem;
     }
     
@@ -363,59 +584,103 @@
     </style>
 </head>
 <body>
-    <h1>Doctors List</h1>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/" class="nav-link active">Doctors</a></li>
+            <li><a href="/patientview.html" class="nav-link">Patients</a></li>
+            <li><a href="/wardview.html" class="nav-link">Wards</a></li>
+            <li><a href="/payment.html" class="nav-link">Payment</a></li>
+            <li><a href="/medicview.html" class="nav-link">Medical</a></li>
+        </ul>  
+    </nav>
+    <div class="overlay"></div>
+    
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Doctors List</h1>
 
-    <!-- Advanced Search Form -->
-    <form class="search-form" action="/doctors" method="GET">
-        <input type="text" name="DoctorID" class="search-input" placeholder="Doctor ID" value="<%= query?.DoctorID || '' %>">
-        <input type="text" name="FirstName" class="search-input" placeholder="First Name" value="<%= query?.FirstName || '' %>">
-        <input type="text" name="LastName" class="search-input" placeholder="Last Name" value="<%= query?.LastName || '' %>">
-        <input type="text" name="Address" class="search-input" placeholder="Address" value="<%= query?.Address || '' %>">
-        <input type="text" name="Ward_Id" class="search-input" placeholder="Ward ID" value="<%= query?.Ward_ID || '' %>">
-        <button type="submit" class="search-button">Search</button>
-    </form>
+        <!-- Advanced Search Form -->
+        <form class="search-form" action="/doctors" method="GET">
+            <input type="text" name="DoctorID" class="search-input" placeholder="Doctor ID" value="<%= query?.DoctorID || '' %>">
+            <input type="text" name="FirstName" class="search-input" placeholder="First Name" value="<%= query?.FirstName || '' %>">
+            <input type="text" name="LastName" class="search-input" placeholder="Last Name" value="<%= query?.LastName || '' %>">
+            <input type="text" name="Address" class="search-input" placeholder="Address" value="<%= query?.Address || '' %>">
+            <input type="text" name="Ward_Id" class="search-input" placeholder="Ward ID" value="<%= query?.Ward_ID || '' %>">
+            <button type="submit" class="search-button">Search</button>
+        </form>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Doctor ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Address</th>
-                <th>Phone Number</th>
-                <th>Employment Type</th>
-                <th>Ward ID</th>
-                <th>Specialization</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if (doctors.length > 0) { %>
-                <% doctors.forEach(doctor => { %>
-                    <tr>
-                        <td><%= doctor.DoctorID %></td>
-                        <td><%= doctor.FirstName %></td>
-                        <td><%= doctor.LastName %></td>
-                        <td><%= doctor.Address %></td>
-                        <td><%= doctor.Phone_Num %></td>
-                        <td><%= doctor.Employment_Type %></td>
-                        <td><%= doctor.Ward_Id %></td>
-                        <td><%= doctor.Specialization %></td>
-                        <td>
-                            <!-- Form to send a POST request to delete the doctor -->
-                            <form action="/delete-doctor" method="POST" style="display:inline;">
-                                <input type="hidden" name="DoctorID" value="<%= doctor.DoctorID %>">
-                                <button type="submit" class="delete-btn">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                <% }); %>
-            <% } else { %>
+        <table>
+            <thead>
                 <tr>
-                    <td colspan="9" style="text-align: center;">No doctors found.</td>
+                    <th>Doctor ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Employment Type</th>
+                    <th>Ward ID</th>
+                    <th>Specialization</th>
+                    <th>Action</th>
                 </tr>
-            <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% if (doctors.length > 0) { %>
+                    <% doctors.forEach(doctor => { %>
+                        <tr>
+                            <td><%= doctor.DoctorID %></td>
+                            <td><%= doctor.FirstName %></td>
+                            <td><%= doctor.LastName %></td>
+                            <td><%= doctor.Address %></td>
+                            <td><%= doctor.Phone_Num %></td>
+                            <td><%= doctor.Employment_Type %></td>
+                            <td><%= doctor.Ward_Id %></td>
+                            <td><%= doctor.Specialization %></td>
+                            <td>
+                                <!-- Form to send a POST request to delete the doctor -->
+                                <form action="/delete-doctor" method="POST" style="display:inline;">
+                                    <input type="hidden" name="DoctorID" value="<%= doctor.DoctorID %>">
+                                    <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="9" style="text-align: center;">No doctors found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- JavaScript for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.overlay');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            mobileMenuClose.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            overlay.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
 </body>
 </html>
+
